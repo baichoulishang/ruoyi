@@ -145,6 +145,7 @@ public class UpdateLog extends BaseEntity
             .append("createUser", getCreateUser())
             .append("createTime", getCreateTime())
             .append("version", getVersion())
+            .append("updateTime", getUpdateTime())
             .toString();
     }
 }

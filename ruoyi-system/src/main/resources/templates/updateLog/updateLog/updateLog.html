@@ -84,11 +84,6 @@
         var updateResultDatas = [[${@dict.getType('update_result')}]];
         var prefix = ctx + "updateLog/updateLog";
 
-        function haveUpdated() {
-
-        }
-
-
         $(function() {
             var options = {
                 url: prefix + "/list",
@@ -137,6 +132,10 @@
                     formatter: function(value, row, index) {
                        return $.table.selectDictLabel(updateResultDatas, value);
                     }
+                },
+                {
+                    field: 'updateTime',
+                    title: '部署时间',
                 },
                 {
                     field: 'createUser',

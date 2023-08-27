@@ -15,10 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="createUser"    column="create_user"    />
         <result property="createTime"    column="create_time"    />
         <result property="version"    column="version"    />
+        <result property="updateTime"    column="update_time"    />
     </resultMap>
 
     <sql id="selectUpdateLogVo">
-        select id, system_loc, inferface_or_web, module, log, package_loc, update_result, create_user, create_time, version from update_log
+        select id, system_loc, inferface_or_web, module, log, package_loc, update_result, create_user, create_time, version, update_time from update_log
     </sql>
 
     <select id="selectUpdateLogList" parameterType="UpdateLog" resultMap="UpdateLogResult">
@@ -52,6 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createUser != null">create_user,</if>
             <if test="createTime != null">create_time,</if>
             <if test="version != null">version,</if>
+            <if test="updateTime != null">update_time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="systemLoc != null">#{systemLoc},</if>
@@ -63,6 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createUser != null">#{createUser},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="version != null">#{version},</if>
+            <if test="updateTime != null">#{updateTime},</if>
          </trim>
     </insert>
 
@@ -78,6 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createUser != null">create_user = #{createUser},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
             <if test="version != null">version = #{version},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
         </trim>
         where id = #{id}
     </update>

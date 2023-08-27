@@ -67,6 +67,7 @@ public class UpdateLogServiceImpl implements IUpdateLogService
     @Override
     public int updateUpdateLog(UpdateLog updateLog)
     {
+        updateLog.setUpdateTime(DateUtils.getNowDate());
         return updateLogMapper.updateUpdateLog(updateLog);
     }
 
