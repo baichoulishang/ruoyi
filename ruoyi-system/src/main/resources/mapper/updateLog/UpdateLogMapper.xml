@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.updatelog.mapper.UpdateLogMapper">
+    
+    <resultMap type="UpdateLog" id="UpdateLogResult">
+        <result property="id"    column="id"    />
+        <result property="systemLoc"    column="system_loc"    />
+        <result property="inferfaceOrWeb"    column="inferface_or_web"    />
+        <result property="module"    column="module"    />
+        <result property="log"    column="log"    />
+        <result property="packageLoc"    column="package_loc"    />
+        <result property="updateResult"    column="update_result"    />
+        <result property="createUser"    column="create_user"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="version"    column="version"    />
+    </resultMap>
+
+    <sql id="selectUpdateLogVo">
+        select id, system_loc, inferface_or_web, module, log, package_loc, update_result, create_user, create_time, version from update_log
+    </sql>
+
+    <select id="selectUpdateLogList" parameterType="UpdateLog" resultMap="UpdateLogResult">
+        <include refid="selectUpdateLogVo"/>
+        <where>  
+            <if test="systemLoc != null "> and system_loc = #{systemLoc}</if>
+            <if test="inferfaceOrWeb != null "> and inferface_or_web = #{inferfaceOrWeb}</if>
+            <if test="module != null  and module != ''"> and module = #{module}</if>
+            <if test="log != null  and log != ''"> and log = #{log}</if>
+            <if test="packageLoc != null  and packageLoc != ''"> and package_loc = #{packageLoc}</if>
+            <if test="updateResult != null "> and update_result = #{updateResult}</if>
+            <if test="createUser != null  and createUser != ''"> and create_user = #{createUser}</if>
+            <if test="version != null  and version != ''"> and version = #{version}</if>
+        </where>
+    </select>
+    
+    <select id="selectUpdateLogById" parameterType="Long" resultMap="UpdateLogResult">
+        <include refid="selectUpdateLogVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUpdateLog" parameterType="UpdateLog" useGeneratedKeys="true" keyProperty="id">
+        insert into update_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="systemLoc != null">system_loc,</if>
+            <if test="inferfaceOrWeb != null">inferface_or_web,</if>
+            <if test="module != null">module,</if>
+            <if test="log != null">log,</if>
+            <if test="packageLoc != null">package_loc,</if>
+            <if test="updateResult != null">update_result,</if>
+            <if test="createUser != null">create_user,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="version != null">version,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="systemLoc != null">#{systemLoc},</if>
+            <if test="inferfaceOrWeb != null">#{inferfaceOrWeb},</if>
+            <if test="module != null">#{module},</if>
+            <if test="log != null">#{log},</if>
+            <if test="packageLoc != null">#{packageLoc},</if>
+            <if test="updateResult != null">#{updateResult},</if>
+            <if test="createUser != null">#{createUser},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="version != null">#{version},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUpdateLog" parameterType="UpdateLog">
+        update update_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="systemLoc != null">system_loc = #{systemLoc},</if>
+            <if test="inferfaceOrWeb != null">inferface_or_web = #{inferfaceOrWeb},</if>
+            <if test="module != null">module = #{module},</if>
+            <if test="log != null">log = #{log},</if>
+            <if test="packageLoc != null">package_loc = #{packageLoc},</if>
+            <if test="updateResult != null">update_result = #{updateResult},</if>
+            <if test="createUser != null">create_user = #{createUser},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="version != null">version = #{version},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUpdateLogById" parameterType="Long">
+        delete from update_log where id = #{id}
+    </delete>
+
+    <delete id="deleteUpdateLogByIds" parameterType="String">
+        delete from update_log where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

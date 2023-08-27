@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增系统更新日志')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-updateLog-add">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">哪里的更新包，建德，海潮，等等：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box" th:each="dict : ${@dict.getType('system_loc')}">
+                        <input type="radio" th:id="${'systemLoc_' + dict.dictCode}" name="systemLoc" th:value="${dict.dictValue}" th:checked="${dict.default}">
+                        <label th:for="${'systemLoc_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">接口还是web：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box" th:each="dict : ${@dict.getType('inferface_or_web')}">
+                        <input type="radio" th:id="${'inferfaceOrWeb_' + dict.dictCode}" name="inferfaceOrWeb" th:value="${dict.dictValue}" th:checked="${dict.default}">
+                        <label th:for="${'inferfaceOrWeb_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">哪个模块：</label>
+                <div class="col-sm-8">
+                    <input name="module" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">更新日志：</label>
+                <div class="col-sm-8">
+                    <textarea name="log" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">更新包位置：</label>
+                <div class="col-sm-8">
+                    <input name="packageLoc" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">是否已经部署：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box" th:each="dict : ${@dict.getType('update_result')}">
+                        <input type="radio" th:id="${'updateResult_' + dict.dictCode}" name="updateResult" th:value="${dict.dictValue}" th:checked="${dict.default}">
+                        <label th:for="${'updateResult_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">创建人：</label>
+                <div class="col-sm-8">
+                    <input name="createUser" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">版本号：</label>
+                <div class="col-sm-8">
+                    <input name="version" class="form-control" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var prefix = ctx + "updateLog/updateLog"
+        $("#form-updateLog-add").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/add", $('#form-updateLog-add').serialize());
+            }
+        }
+    </script>
+</body>
+</html>
