@@ -17,6 +17,15 @@
                 </div>
             </div>
             <div class="form-group">    
+                <label class="col-sm-3 control-label">哪一个系统：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box" th:each="dict : ${@dict.getType('which_system')}">
+                        <input type="radio" th:id="${'whichSystem_' + dict.dictCode}" name="whichSystem" th:value="${dict.dictValue}" th:field="*{whichSystem}">
+                        <label th:for="${'whichSystem_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
                 <label class="col-sm-3 control-label">接口还是web：</label>
                 <div class="col-sm-8">
                     <div class="radio-box" th:each="dict : ${@dict.getType('inferface_or_web')}">
@@ -62,6 +71,12 @@
                 <label class="col-sm-3 control-label">版本号：</label>
                 <div class="col-sm-8">
                     <input name="version" th:field="*{version}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">sql脚本：</label>
+                <div class="col-sm-8">
+                    <textarea name="sqlContent" class="form-control">[[*{sqlContent}]]</textarea>
                 </div>
             </div>
         </form>

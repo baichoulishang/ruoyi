@@ -12,8 +12,8 @@ import com.ruoyi.common.core.text.Convert;
 /**
  * 系统更新日志Service业务层处理
  * 
- * @author cyk
- * @date 2023-08-27
+ * @author ruoyi
+ * @date 2023-08-28
  */
 @Service
 public class UpdateLogServiceImpl implements IUpdateLogService 
@@ -54,7 +54,6 @@ public class UpdateLogServiceImpl implements IUpdateLogService
     @Override
     public int insertUpdateLog(UpdateLog updateLog)
     {
-        updateLog.setCreateTime(DateUtils.getNowDate());
         return updateLogMapper.insertUpdateLog(updateLog);
     }
 

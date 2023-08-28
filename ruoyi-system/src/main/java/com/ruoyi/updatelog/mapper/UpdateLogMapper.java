@@ -6,8 +6,8 @@ import com.ruoyi.updatelog.domain.UpdateLog;
 /**
  * 系统更新日志Mapper接口
  * 
- * @author cyk
- * @date 2023-08-27
+ * @author ruoyi
+ * @date 2023-08-28
  */
 public interface UpdateLogMapper 
 {

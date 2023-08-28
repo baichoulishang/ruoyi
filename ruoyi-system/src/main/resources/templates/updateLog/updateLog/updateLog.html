@@ -18,6 +18,13 @@
                                 </select>
                             </li>
                             <li>
+                                <label>哪一个系统：</label>
+                                <select name="whichSystem" th:with="type=${@dict.getType('which_system')}">
+                                    <option value="">所有</option>
+                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                                </select>
+                            </li>
+                            <li>
                                 <label>接口还是web：</label>
                                 <select name="inferfaceOrWeb" th:with="type=${@dict.getType('inferface_or_web')}">
                                     <option value="">所有</option>
@@ -80,6 +87,7 @@
         var editFlag = [[${@permission.hasPermi('updateLog:updateLog:edit')}]];
         var removeFlag = [[${@permission.hasPermi('updateLog:updateLog:remove')}]];
         var systemLocDatas = [[${@dict.getType('system_loc')}]];
+        var whichSystemDatas = [[${@dict.getType('which_system')}]];
         var inferfaceOrWebDatas = [[${@dict.getType('inferface_or_web')}]];
         var updateResultDatas = [[${@dict.getType('update_result')}]];
         var prefix = ctx + "updateLog/updateLog";
@@ -105,6 +113,13 @@
                     title: '哪里的更新包，建德，海潮，等等',
                     formatter: function(value, row, index) {
                        return $.table.selectDictLabel(systemLocDatas, value);
+                    }
+                },
+                {
+                    field: 'whichSystem',
+                    title: '哪一个系统',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(whichSystemDatas, value);
                     }
                 },
                 {
@@ -134,16 +149,16 @@
                     }
                 },
                 {
-                    field: 'updateTime',
-                    title: '部署时间',
-                },
-                {
                     field: 'createUser',
                     title: '创建人'
                 },
                 {
                     field: 'version',
                     title: '版本号'
+                },
+                {
+                    field: 'sqlContent',
+                    title: 'sql脚本'
                 },
                 {
                     title: '操作',

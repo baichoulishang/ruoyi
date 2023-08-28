@@ -23,8 +23,8 @@ import com.ruoyi.common.core.page.TableDataInfo;
 /**
  * 系统更新日志Controller
  * 
- * @author cyk
- * @date 2023-08-27
+ * @author ruoyi
+ * @date 2023-08-28
  */
 @Controller
 @RequestMapping("/updateLog/updateLog")
