@@ -167,7 +167,8 @@
                         var actions = [];
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        actions.push('<a class="btn btn-info btn-xs href="javascript:void(0)" onclick="hasUpdate(\'' + row.id + '\')"><i class="fa fa-remove"></i>已经更新</a>');
+                        actions.push('<a class="btn btn-info btn-xs href="javascript:void(0)" onclick="hasUpdateSite(\'' + row.id + '\')"><i class="fa fa-remove"></i>已更现场</a>');
+                        actions.push('<a class="btn btn-info btn-xs href="javascript:void(0)" onclick="hasUpdateTest(\'' + row.id + '\')"><i class="fa fa-remove"></i>已更测试</a>');
                         return actions.join('');
                     }
                 }]
@@ -175,8 +176,11 @@
             $.table.init(options);
         });
 
-        function hasUpdate(id) {
-            $.operate.post(prefix + "/hasUpdate",{id: id});
+        function hasUpdateSite(id) {
+            $.operate.post(prefix + "/hasUpdateSite",{id: id});
+        }
+        function hasUpdateTest(id) {
+            $.operate.post(prefix + "/hasUpdateSite",{id: id});
         }
     </script>
 </body>
