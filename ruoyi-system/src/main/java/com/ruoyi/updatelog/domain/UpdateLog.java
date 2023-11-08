@@ -7,12 +7,12 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 系统更新日志对象 update_log
- * 
+ *
  * @author ruoyi
- * @date 2023-08-28
+ * @date 2023-11-07
  */
-public class UpdateLog extends BaseEntity
-{
+public class UpdateLog extends BaseEntity {
+
     private static final long serialVersionUID = 1L;
 
     /** 主键 */
@@ -58,121 +58,111 @@ public class UpdateLog extends BaseEntity
     @Excel(name = "sql脚本")
     private String sqlContent;
 
-    public void setId(Long id) 
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() 
-    {
+    public Long getId() {
         return id;
     }
-    public void setSystemLoc(Integer systemLoc) 
-    {
+
+    public void setSystemLoc(Integer systemLoc) {
         this.systemLoc = systemLoc;
     }
 
-    public Integer getSystemLoc() 
-    {
+    public Integer getSystemLoc() {
         return systemLoc;
     }
-    public void setWhichSystem(Integer whichSystem) 
-    {
+
+    public void setWhichSystem(Integer whichSystem) {
         this.whichSystem = whichSystem;
     }
 
-    public Integer getWhichSystem() 
-    {
+    public Integer getWhichSystem() {
         return whichSystem;
     }
-    public void setInferfaceOrWeb(Integer inferfaceOrWeb) 
-    {
+
+    public void setInferfaceOrWeb(Integer inferfaceOrWeb) {
         this.inferfaceOrWeb = inferfaceOrWeb;
     }
 
-    public Integer getInferfaceOrWeb() 
-    {
+    public Integer getInferfaceOrWeb() {
         return inferfaceOrWeb;
     }
-    public void setModule(String module) 
-    {
+
+    public void setModule(String module) {
         this.module = module;
     }
 
-    public String getModule() 
-    {
+    public String getModule() {
         return module;
     }
-    public void setLog(String log) 
-    {
+
+    public void setLog(String log) {
         this.log = log;
     }
 
-    public String getLog() 
-    {
+    public String getLog() {
         return log;
     }
-    public void setPackageLoc(String packageLoc) 
-    {
+
+    public void setPackageLoc(String packageLoc) {
         this.packageLoc = packageLoc;
     }
 
-    public String getPackageLoc() 
-    {
+    public String getPackageLoc() {
         return packageLoc;
     }
-    public void setUpdateResult(Integer updateResult) 
-    {
+
+    public void setUpdateResult(Integer updateResult) {
         this.updateResult = updateResult;
     }
 
-    public Integer getUpdateResult() 
-    {
+    public Integer getUpdateResult() {
         return updateResult;
     }
-    public void setCreateUser(String createUser) 
-    {
+
+    public void setCreateUser(String createUser) {
         this.createUser = createUser;
     }
 
-    public String getCreateUser() 
-    {
+    public String getCreateUser() {
         return createUser;
     }
-    public void setVersion(String version) 
-    {
+
+    public void setVersion(String version) {
         this.version = version;
     }
 
-    public String getVersion() 
-    {
+    public String getVersion() {
         return version;
     }
-    public void setSqlContent(String sqlContent) 
-    {
+
+    public void setSqlContent(String sqlContent) {
         this.sqlContent = sqlContent;
     }
 
-    public String getSqlContent() 
-    {
+    public String getSqlContent() {
         return sqlContent;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("systemLoc", getSystemLoc())
-            .append("whichSystem", getWhichSystem())
-            .append("inferfaceOrWeb", getInferfaceOrWeb())
-            .append("module", getModule())
-            .append("log", getLog())
-            .append("packageLoc", getPackageLoc())
-            .append("updateResult", getUpdateResult())
-            .append("createUser", getCreateUser())
-            .append("version", getVersion())
-            .append("sqlContent", getSqlContent())
-            .append("updateTime", getUpdateTime())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("id", getId())
+                .append("systemLoc", getSystemLoc())
+                .append("whichSystem", getWhichSystem())
+                .append("inferfaceOrWeb", getInferfaceOrWeb())
+                .append("module", getModule())
+                .append("log", getLog())
+                .append("packageLoc", getPackageLoc())
+                .append("updateResult", getUpdateResult())
+                .append("createUser", getCreateUser())
+                .append("version", getVersion())
+                .append("sqlContent", getSqlContent())
+                .append("updateTime", getUpdateTime())
+                .append("createTime", getCreateTime())
+                .toString();
     }
+
 }

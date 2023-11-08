@@ -102,7 +102,7 @@ public class UpdateLogController extends BaseController {
     @PostMapping("/hasUpdateTest")
     @ResponseBody
     public AjaxResult hasUpdateTest(UpdateLog updateLog) {
-        updateLog.setUpdateResult(1);
+        updateLog.setUpdateResult(2);
         updateLog.setUpdateTime(new Date());
         updateLogService.updateUpdateLog(updateLog);
         return toAjax(1);
@@ -114,7 +114,7 @@ public class UpdateLogController extends BaseController {
     @PostMapping("/hasUpdateSite")
     @ResponseBody
     public AjaxResult hasUpdateSite(UpdateLog updateLog) {
-        updateLog.setUpdateResult(2);
+        updateLog.setUpdateResult(1);
         updateLog.setUpdateTime(new Date());
         updateLogService.updateUpdateLog(updateLog);
         return toAjax(1);

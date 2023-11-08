@@ -161,6 +161,10 @@
                     title: 'sql脚本'
                 },
                 {
+                    field: 'createTime',
+                    title: '创建时间'
+                },
+                {
                     title: '操作',
                     align: 'center',
                     formatter: function(value, row, index) {
@@ -180,7 +184,7 @@
             $.operate.post(prefix + "/hasUpdateSite",{id: id});
         }
         function hasUpdateTest(id) {
-            $.operate.post(prefix + "/hasUpdateSite",{id: id});
+            $.operate.post(prefix + "/hasUpdateTest",{id: id});
         }
     </script>
 </body>
